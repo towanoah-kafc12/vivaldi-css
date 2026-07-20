@@ -56,3 +56,72 @@
 .tabbar-workspace-button {
   width: 100% !important;
 }
+
+/* 右サイドパネルのアイコンバーを右端ホバー時のみオーバーレイ表示する */
+#panels-container.right.icons:not(.switcher) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  flex: 0 0 1px !important;
+  width: 1px !important;
+  min-width: 1px !important;
+  max-width: 1px !important;
+  overflow: visible;
+  z-index: 4;
+  transition: flex-basis var(--duration) ease-out, width var(--duration) ease-out,
+    min-width var(--duration) ease-out, max-width var(--duration) ease-out;
+}
+
+#panels-container.right.icons:not(.switcher) #panel_switch {
+  flex: 0 0 1px;
+  width: 1px;
+  min-width: 1px;
+  max-width: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#panels-container.right.icons:not(.switcher) #switch {
+  flex-basis: 0;
+  max-width: 0;
+  padding-top: 0;
+  background-color: var(--colorBg);
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: flex-basis var(--duration) ease-out, max-width var(--duration) ease-out,
+    opacity var(--duration) ease-out;
+}
+
+#panels-container.right.icons:not(.switcher):hover,
+#panels-container.right.icons:not(.switcher):focus-within {
+  flex-basis: 35px !important;
+  width: 35px !important;
+  min-width: 35px !important;
+  max-width: 35px !important;
+}
+
+#panels-container.right.icons:not(.switcher):hover #switch,
+#panels-container.right.icons:not(.switcher):focus-within #switch {
+  flex-basis: 34px;
+  max-width: 34px;
+  padding-top: 6px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.density-on #panels-container.right.icons:not(.switcher):hover,
+.density-on #panels-container.right.icons:not(.switcher):focus-within {
+  flex-basis: calc(35px + var(--densityGap) * 2) !important;
+  width: calc(35px + var(--densityGap) * 2) !important;
+  min-width: calc(35px + var(--densityGap) * 2) !important;
+  max-width: calc(35px + var(--densityGap) * 2) !important;
+}
+
+.density-on #panels-container.right.icons:not(.switcher):hover #switch,
+.density-on #panels-container.right.icons:not(.switcher):focus-within #switch {
+  flex-basis: calc(34px + var(--densityGap) * 2);
+  max-width: calc(34px + var(--densityGap) * 2);
+}

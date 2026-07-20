@@ -12,7 +12,11 @@
   overflow: hidden;
 }
 
-/* ホバー時の拡大（より具体的なセレクタ） */
+/* Vivaldi の表示中の上部バーをタブバーより前面にする */
+.auto-hide-wrapper.top {
+  z-index: 100000000 !important;
+}
+
 #tabs-container.left:hover,
 #tabs-subcontainer.left:hover,
 .tabs-left #tabs-container:hover,
@@ -35,6 +39,11 @@
 .tabs-left #tabs-tabbar-container {
   width: auto !important;
   min-width: 32px !important;
+}
+
+/* ワークスペース選択メニューを展開したタブバーより前面にする */
+#browser .button-popup:has(.WorkspacePopup) {
+  z-index: 100000000 !important;
 }
 
 /* 新規タブボタンの位置調整 */

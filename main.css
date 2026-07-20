@@ -1,0 +1,49 @@
+/* 垂直タブバーの基本設定 */
+#tabs-container.left,
+#tabs-subcontainer.left,
+#tabs-container.right,
+#tabs-subcontainer.right {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  width: 32px !important;
+  background-color: #212121;
+  z-index: 99999999;
+  overflow: hidden;
+}
+
+/* ホバー時の拡大（より具体的なセレクタ） */
+#tabs-container.left:hover,
+#tabs-subcontainer.left:hover,
+.tabs-left #tabs-container:hover,
+.tabs-left #tabs-subcontainer:hover {
+  width: 150px !important;
+  min-width: 150px !important;
+}
+
+/* ホバー解除時の明示的な設定 */
+#tabs-container.left:not(:hover),
+#tabs-subcontainer.left:not(:hover),
+.tabs-left #tabs-container:not(:hover),
+.tabs-left #tabs-subcontainer:not(:hover) {
+  width: 32px !important;
+  min-width: 32px !important;
+}
+
+/* タブバーコンテナの設定 */
+#tabs-tabbar-container.left,
+.tabs-left #tabs-tabbar-container {
+  width: auto !important;
+  min-width: 32px !important;
+}
+
+/* 新規タブボタンの位置調整 */
+.button-toolbar.newtab {
+  left: 0px !important;
+  width: 150px;
+}
+
+/* ワークスペースボタンの調整 */
+.tabbar-workspace-button {
+  width: 100% !important;
+}

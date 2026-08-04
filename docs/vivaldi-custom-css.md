@@ -80,18 +80,6 @@ Vivaldi の上部自動非表示コンテナは `.auto-hide-wrapper.top` です�
 
 全ての `.button-popup` を上げると他のツールバーメニューまで影響を受けるため、必ず `:has(.WorkspacePopup)` を残してください。
 
-## 右サイドパネルのホバー表示
-
-右サイドパネルを閉じた状態（`#panels-container.right.icons:not(.switcher)`）では、`#switch` がパネルアイコンバーです。この状態だけを対象に、コンテナを右端の絶対配置オーバーレイへ変更します。
-
-- 通常時はコンテナと `#panel_switch` を `1px` に縮め、右端にホバー検知領域だけを残す。`0px` にするとホバーできなくなる。
-- `:hover` または `:focus-within` のときだけコンテナを `35px`、`#switch` を `34px` に戻す。これにより、アイコンバーは表示されるが Web ページの幅を押し縮めない。
-- `.icons` 状態だけに限定する。パネルを開いた状態には適用しないため、Vivaldi 標準の固定幅／オーバーレイ設定とパネルを開く操作を維持できる。
-- `#switch` の背景には不透明な `var(--colorBg)` を使う。`--colorBgAlphaBlur` は半透明・ぼかし用のため、従来と同じ不透明なバー背景には使わない。
-- `.density-on` では Vivaldi 標準に合わせ、幅へ `var(--densityGap) * 2` を加える。
-
-Vivaldi の状態クラスは内部実装であり、更新時に変わる可能性があります。機能が崩れた場合は、インストール済み `common.css` で `#panels-container`、`.icons`、`#switch`、`#panel_switch` を確認してください。
-
 ## Vivaldi 更新時の調査方法
 
 Vivaldi のアップデート後に表示が崩れた場合、まず UI セレクタの変更を確認します。今回確認した Vivaldi 8.1.4087.55 の CSS は次の場所です。
@@ -103,7 +91,6 @@ Vivaldi のアップデート後に表示が崩れた場合、まず UI セレ�
 特に次の文字列を検索します。
 
 - `#tabs-container`、`#tabs-subcontainer`、`#tabs-tabbar-container`
-- `#panels-container`、`.icons`、`#switch`、`#panel_switch`
 - `.auto-hide-wrapper.top`
 - `.vivaldi`
 - `.WorkspacePopup`
@@ -121,6 +108,4 @@ Vivaldi のアップデート後に表示が崩れた場合、まず UI セレ�
    - 上部バー表示中、左上の Vivaldi アイコンが見えてクリックできる。
    - アドレスバーからマウスを離すと自動的に隠れる。
    - ワークスペース選択メニューが展開したタブバーより前面に表示され、項目を選択できる。
-   - 右サイドパネルを閉じた状態では、右端ホバー時だけアイコンバーが不透明な背景で表示され、Web ページの幅が変わらない。
-   - 右サイドパネルのアイコンをクリックした後は、Vivaldi の設定どおりに固定幅またはオーバーレイでパネルが開く。
 4. 問題があれば、まず `z-index` の競合と、ポップアップの実際の親要素を確認する。タブコンテナの `top` を変更して回避しない。

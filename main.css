@@ -39,6 +39,24 @@
   transition-delay: 0ms !important;
 }
 
+/* Vivaldi 8.2: 外側を広げてもタブ行と tab-mini 判定が狭い幅のまま残る */
+:is(#tabs-container.left, #tabs-subcontainer.left):hover
+  .tab-position:not(.is-pinned) {
+  width: 100% !important;
+}
+
+:is(#tabs-container.left, #tabs-subcontainer.left):hover
+  .tab.tab-mini:not(.pinned) .tab-header {
+  justify-content: flex-start;
+  padding-left: 6px;
+}
+
+:is(#tabs-container.left, #tabs-subcontainer.left):hover
+  .tab.tab-mini:not(.pinned) .tab-header .title {
+  display: flex !important;
+  min-width: 0;
+}
+
 /* タブバーコンテナの設定 */
 #tabs-tabbar-container.left,
 .tabs-left #tabs-tabbar-container {

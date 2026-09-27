@@ -45,16 +45,24 @@
   width: 100% !important;
 }
 
-:is(#tabs-container.left, #tabs-subcontainer.left):hover
+/* 幅の縮小中も tab-mini のアイコンが中央へ飛ばないようにする */
+:is(#tabs-container.left, #tabs-subcontainer.left)
   .tab.tab-mini:not(.pinned) .tab-header {
   justify-content: flex-start;
-  padding-left: 6px;
+  padding-left: 5px;
 }
 
 :is(#tabs-container.left, #tabs-subcontainer.left):hover
   .tab.tab-mini:not(.pinned) .tab-header .title {
   display: flex !important;
   min-width: 0;
+}
+
+/* タブ行の幅が変わっても、スタック展開矢印をアイコンの下に保つ */
+:is(#tabs-container.left, #tabs-subcontainer.left) .accordion-toggle-arrow {
+  justify-content: flex-start;
+  padding-left: 7px;
+  box-sizing: border-box;
 }
 
 /* タブバーコンテナの設定 */
@@ -78,4 +86,22 @@
 /* ワークスペースボタンの調整 */
 .tabbar-workspace-button {
   width: 100% !important;
+}
+
+/* 幅のアニメーション中もアイコンを左端に固定し、タイトルの位置は保つ */
+.tabs-left .tabbar-workspace-button {
+  position: relative;
+}
+
+.tabs-left .tabbar-workspace-button button::before {
+  content: "";
+  flex: 0 0 28px;
+}
+
+.tabs-left .tabbar-workspace-button .button-icon:not(.audio) {
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  width: 28px;
+  transform: translateY(-50%);
 }
